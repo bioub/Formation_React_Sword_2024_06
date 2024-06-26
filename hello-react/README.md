@@ -145,7 +145,7 @@ Puis utiliser `setTodos` dans le `handleSubmit` pour ajouter un nouvel élement 
 setTodos(
   [
     ...todos,
-    { /*  un object avec 3 clés : _id (Math.random().toString()), title (la valeur qui venait du champ) et completed  */ }
+    { /*  un object avec 3 clés : id (Math.random()), title (la valeur qui venait du champ) et completed (false)  */ }
   ]
 )
 ```
