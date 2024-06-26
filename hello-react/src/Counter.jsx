@@ -1,16 +1,14 @@
-import { useState } from "react";
 
-function Counter() {
-  const [counterObj, setCounterObj] = useState({ count: 0 })
+function Counter({ count, onIncrement }) {
+  
 
   function clickHandler() {
-    setCounterObj({ ...counterObj, count: counterObj.count + 1 });
-    // setArray([newValue, ...array])
+    onIncrement(count);
   }
 
   return (
     <button onClick={clickHandler}>
-      count is {counterObj.count}
+      count is {count}
     </button>
   );
 }

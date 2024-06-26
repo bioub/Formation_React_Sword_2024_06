@@ -7,6 +7,11 @@ import Clock from './Clock';
 
 function App() {
   // console.log('App');
+  const [count, setCount] = useState(0)
+
+  function incrementHandler(oldCount) {
+    setCount(oldCount + 1);
+  }
 
   return (
     <>
@@ -21,7 +26,8 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <Clock />
-        <Counter />
+        <Counter count={count} onIncrement={incrementHandler} />
+        <Counter count={count} onIncrement={incrementHandler} />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>

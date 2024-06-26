@@ -1,16 +1,24 @@
 // import { useState } from 'react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import TodoItem from './TodoItem';
+import { fetchTodos } from './api';
 
 function App() {
   const [todos, setTodos] = useState([
-    { id: 123, title: 'ABC', completed: false },
-    { id: 456, title: 'DEF', completed: true },
-    { id: 789, title: 'XYZ', completed: false },
+    // { id: 123, title: 'ABC', completed: false },
+    // { id: 456, title: 'DEF', completed: true },
+    // { id: 789, title: 'XYZ', completed: false },
   ]);
   const [newTodo, setNewTodo] = useState('ABC');
   const editingId = 789;
+
+  useEffect(() => {
+    
+    fetchTodos().then((todos) => {
+     // setTodos(todos);
+    });
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
