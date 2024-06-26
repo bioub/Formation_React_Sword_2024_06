@@ -1,5 +1,5 @@
-function TodoInputValue() {
-  return <input type="text" className="TodoInputValue" value="ABC" />;
+function TodoInputValue({ title }) {
+  return <input type="text" className="TodoInputValue" value={title} />;
 }
 
 export default TodoInputValue;

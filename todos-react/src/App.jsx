@@ -3,7 +3,12 @@ import './App.css';
 import TodoItem from './TodoItem';
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const todos = [
+    { id: 123, title: 'ABC', completed: false },
+    { id: 456, title: 'DEF', completed: true },
+    { id: 789, title: 'XYZ', completed: false },
+  ];
+  const editingId = 789;
 
   return (
     <>
@@ -13,9 +18,7 @@ function App() {
         <button>+</button>
       </form>
       <div className="todos-container">
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {todos.map((todo) => <TodoItem key={todo.id} todo={todo} isEditing={todo.id === editingId} />)}
       </div>
     </>
   );

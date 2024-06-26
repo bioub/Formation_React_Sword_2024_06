@@ -1,9 +1,5 @@
-function TodoSpanValue() {
-  return (
-    <span className="TodoSpanValue">
-      ABC
-    </span>
-  );
+function TodoSpanValue({ title }) {
+  return <span className="TodoSpanValue">{title}</span>;
 }
 
 export default TodoSpanValue;
