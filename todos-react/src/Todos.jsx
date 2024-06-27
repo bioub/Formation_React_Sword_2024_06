@@ -44,7 +44,7 @@ function Todos() {
   return (
     <>
       <form className="todos-form" onSubmit={handleSubmit}>
-        <input type="checkbox" className="todos-toggle-checked" onChange={handleToggleClick} />
+        <input type="checkbox" className="checkbox" onChange={handleToggleClick} />
         <input
           type="text"
           className="todos-new-input"
