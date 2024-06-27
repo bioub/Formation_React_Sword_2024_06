@@ -8,6 +8,12 @@
 		},
 		{
 			"path": "todos-react"
+		},
+		{
+			"path": "demos-redux"
+		},
+		{
+			"path": "todos-react-redux"
 		}
 	]
 }
