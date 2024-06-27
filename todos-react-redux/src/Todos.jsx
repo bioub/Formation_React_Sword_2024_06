@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import TodoItem from './TodoItem';
 import { fetchTodos } from './api';
 import { useDispatch, useSelector } from 'react-redux';
-import { newTodoSelector, todosSelector } from './store/selectors';
-import { addTodo, updateNewTodo } from './store/actions';
+import { editingIdSelector, newTodoSelector, todosSelector } from './store/selectors';
+import { addTodo, deleteTodo, editTodo, setAllTodos, toggleCompletedAllTodos, updateEditingId, updateNewTodo } from './store/actions';
 
 function Todos() {
   const todos = useSelector(todosSelector);
@@ -17,16 +17,18 @@ function Todos() {
   // Créer un nouveau reducer pour editingId en vous inspirant de newTodoReducer
   // initialState doit être -1
   // Faire le dispatch là où c'est nécessaire
-  const [editingId, setEditingId] = useState();
+  // const [editingId, setEditingId] = useState();
+  const editingId = useSelector(editingIdSelector);
 
   useEffect(() => {
     fetchTodos().then((todos) => {
       // Exercice 1
-      // Créer un action creator setAllTodo
+      // Créer un action creator setAllTodos
       // Ajouter un cas dans le reducer todosReducer qui reçoit payload et le retourne
       // Dispatcher ci-dessous l'action en passant par l'action creator
+      dispatch(setAllTodos(todos));
     });
-  }, []);
+  }, [dispatch]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -41,7 +43,7 @@ function Todos() {
     // Ajouter un cas dans le reducer todosReducer qui reçoit payload affecter ce booléen
     // à toutes les clés completed du tableau
     // Appeler l'action creator ici avec dispatch
-
+    dispatch(toggleCompletedAllTodos(globalChecked))
     // setTodos(
     //   // idéalement ne pas tout cloner (plus simple avec useImmer) :
     //   // todos.map((todo) => todo.completed === globalChecked ? todo : ({ ...todo, completed: globalChecked }))
@@ -54,6 +56,7 @@ function Todos() {
     // Supprimer la todos du store (à vous de trouver les étapes)
 
     // setTodos(todos.filter((t) => t.id !== todo.id));
+    dispatch(deleteTodo(todo));
   }
 
   function handleEdit(newTodo) {
@@ -61,6 +64,7 @@ function Todos() {
     // Editer la todo du store (à vous de trouver les étapes)
 
     // setTodos(todos.map((t) => t.id === newTodo.id ? newTodo : t));
+    dispatch(editTodo(newTodo))
   }
 
   return (
@@ -83,7 +87,7 @@ function Todos() {
             isEditing={todo.id === editingId}
             onDelete={handleDelete}
             onEdit={handleEdit}
-            onEditingIdChange={setEditingId}
+            onEditingIdChange={(id) => dispatch(updateEditingId(id))}
           />
         ))}
       </div>

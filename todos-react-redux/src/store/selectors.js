@@ -6,6 +6,10 @@ export function newTodoSelector(state) {
   return state.newTodo;
 }
 
+export function editingIdSelector(state) {
+  return state.editingId;
+}
+
 export function todosCompletedNumberSelector(state) {
   return state.todos.filter(t => t.completed).length;
 }

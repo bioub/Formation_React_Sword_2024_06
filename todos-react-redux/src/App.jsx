@@ -11,7 +11,7 @@ import About from './About';
 import Layout from './Layout';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { newTodoReducer, todosReducer } from './store/reducers';
+import { editingIdReducer, newTodoReducer, todosReducer } from './store/reducers';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +38,7 @@ const store = configureStore({
   reducer: {
     todos: todosReducer,
     newTodo: newTodoReducer,
+    editingId: editingIdReducer
   }
 });
 

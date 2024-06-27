@@ -18,6 +18,9 @@ function TodoInputValue({ todo, onEditingIdChange, onEdit }) {
 
   useEffect(() => {
     inputRef.current?.select();
+  }, []);
+
+  useEffect(() => {
     const listener = (event) => {
       if (!inputRef.current.contains(event.target)) {
         onEditingIdChange(-1);
